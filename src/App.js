@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 
 import Courses from './containers/Courses/Courses';
+import Course from './containers/Course/Course';
 import Users from './containers/Users/Users';
 
 class App extends Component {
@@ -36,12 +37,25 @@ class App extends Component {
             </li>
           </ul>
         </nav>
-        <Route path="/courses" component={Courses} />
+        <Route path="/courses" exact component={Courses} />
         <Route path="/users" component={Users} />
         {/* need to wrap the component using routing, exposing the router
         
         could wrap the whole app component with BrowserRouter
         done in index.js */}
+
+        <Route path="/courses/course" component={Course} />
+
+        {/* will load courses and course bellow because without switch by default the /course is treated as a prefix - to fix - add exact to /courses - or use a Switch statement but order matters */}
+
+        {/* 
+        <Switch>
+          <Route path="/users" component={Users} />
+          <Route path="/courses/course" component={Course} />
+          <Route path="/courses" exact component={Courses} />
+        </Switch>
+        */}
+        
       </div>
     );
   }
