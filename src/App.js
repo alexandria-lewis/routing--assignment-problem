@@ -44,7 +44,8 @@ class App extends Component {
         could wrap the whole app component with BrowserRouter
         done in index.js */}
 
-        <Route path="/courses/course" component={Course} />
+        <Route path="/courses/:courseId" component={Course} />
+        {/* Replacing 'course' with a parameter by adding :*paramName* */}
 
         {/* will load courses and course bellow because without switch by default the /course is treated as a prefix - to fix - add exact to /courses - or use a Switch statement but order matters */}
 
@@ -55,7 +56,7 @@ class App extends Component {
           <Route path="/courses" exact component={Courses} />
         </Switch>
         */}
-        
+
       </div>
     );
   }
