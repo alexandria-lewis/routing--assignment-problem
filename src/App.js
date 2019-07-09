@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import Courses from './containers/Courses/Courses';
 import Users from './containers/Users/Users';
@@ -22,10 +22,17 @@ class App extends Component {
           <ul style={{listStyle: 'none', margin: 'auto', padding: '0'}}>
             <li style={{margin: '10px', display: 'inline-block'}}>
               {/* Don't use anchor tags because they reload the page */}
-              <Link to="/courses">Courses</Link>
+              <NavLink to="/courses">Courses</NavLink>
+              {/* By default the active link will recieve the .active class
+
+              added .active styles to index css for global effect
+
+              don't need to add 'exact' because these path are treated like prefixes
+              would be necessary if we used something like '/courses/1' which would also trigger '/courses'
+              but this is fine */}
             </li>
             <li style={{margin: '10px', display: 'inline-block'}}>
-              <Link to="/users">Users</Link>
+              <NavLink to="/users">Users</NavLink>
             </li>
           </ul>
         </nav>
