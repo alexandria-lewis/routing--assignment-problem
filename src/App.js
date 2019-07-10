@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import Courses from './containers/Courses/Courses';
-import Course from './containers/Course/Course';
+// import Course from './containers/Course/Course';
 import Users from './containers/Users/Users';
 
 class App extends Component {
   render () {
+    console.log("App extends Component");
     return (
       <div className="App">
         <ol style={{textAlign: 'left'}}>
@@ -22,40 +23,23 @@ class App extends Component {
         <nav>
           <ul style={{listStyle: 'none', margin: 'auto', padding: '0'}}>
             <li style={{margin: '10px', display: 'inline-block'}}>
-              {/* Don't use anchor tags because they reload the page */}
               <NavLink to="/courses">Courses</NavLink>
-              {/* By default the active link will recieve the .active class
-
-              added .active styles to index css for global effect
-
-              don't need to add 'exact' because these path are treated like prefixes
-              would be necessary if we used something like '/courses/1' which would also trigger '/courses'
-              but this is fine */}
             </li>
             <li style={{margin: '10px', display: 'inline-block'}}>
               <NavLink to="/users">Users</NavLink>
             </li>
           </ul>
         </nav>
-        <Route path="/courses" exact component={Courses} />
+
+        {/* <Route path="/courses" exact component={Courses} />
         <Route path="/users" component={Users} />
-        {/* need to wrap the component using routing, exposing the router
-        
-        could wrap the whole app component with BrowserRouter
-        done in index.js */}
+        <Route path="/courses/:courseId" component={Course} /> */}
 
-        <Route path="/courses/:courseId" component={Course} />
-        {/* Replacing 'course' with a parameter by adding :*paramName* */}
-
-        {/* will load courses and course bellow because without switch by default the /course is treated as a prefix - to fix - add exact to /courses - or use a Switch statement but order matters */}
-
-        {/* 
         <Switch>
           <Route path="/users" component={Users} />
-          <Route path="/courses/course" component={Course} />
+          {/* <Route path="/courses/:courseId" component={Course} /> */}
           <Route path="/courses" exact component={Courses} />
         </Switch>
-        */}
 
       </div>
     );
