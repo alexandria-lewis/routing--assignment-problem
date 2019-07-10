@@ -4,6 +4,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import Courses from './containers/Courses/Courses';
 // import Course from './containers/Course/Course';
 import Users from './containers/Users/Users';
+import NoMatch from './component/NoMatch/NoMatch';
 
 class App extends Component {
   render () {
@@ -39,6 +40,8 @@ class App extends Component {
           <Route path="/users" component={Users} />
           {/* <Route path="/courses/:courseId" component={Course} /> */}
           <Route path="/courses" exact component={Courses} />
+          {/* most unspecific route at the end to catch all */}
+          <Route component={NoMatch} />
         </Switch>
 
       </div>
